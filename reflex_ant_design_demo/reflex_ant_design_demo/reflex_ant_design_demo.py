@@ -82,7 +82,13 @@ def general_section() -> rx.Component:
             wrap=True,
         ),
         antd.title("A heading", level=4),
-        antd.text("Some ", antd.text("strong", strong=True), " and ", antd.text("danger", type="danger"), " text."),
+        antd.text(
+            "Some ",
+            antd.text("strong", strong=True),
+            " and ",
+            antd.text("danger", type="danger"),
+            " text.",
+        ),
     )
 
 
@@ -126,9 +132,14 @@ def data_entry_section() -> rx.Component:
 
 
 def navigation_section() -> rx.Component:
-    """Menu, tabs, steps, pagination, breadcrumb, dropdown."""
+    """Affix, Menu, tabs, steps, pagination, breadcrumb, dropdown."""
     return section(
-        "Navigation — Menu, Tabs, Steps, Pagination, Dropdown",
+        "Navigation — Affix, Menu, Tabs, Steps, Pagination, Dropdown",
+        antd.affix(
+            antd.button("Affixed (offset 8px)", type="dashed"),
+            offset_top=8,
+            on_change=DemoState.set_affixed,
+        ),
         antd.breadcrumb(
             items=[{"title": "Home"}, {"title": "Library"}, {"title": "Ant Design"}],
         ),
@@ -161,9 +172,9 @@ def navigation_section() -> rx.Component:
 
 
 def data_display_section() -> rx.Component:
-    """Table, statistic, tags, badges, avatar, timeline, progress."""
+    """Table, statistic, tags, badges, avatar, timeline, calendar, progress."""
     return section(
-        "Data Display — Table, Statistic, Tag, Badge, Avatar, Timeline",
+        "Data Display — Table, Statistic, Tag, Badge, Avatar, Timeline, Calendar",
         antd.space(
             antd.statistic(title="Active Users", value=1128, prefix=icon("TeamOutlined")),
             antd.statistic(title="Revenue", value=93, suffix="%", precision=0),
@@ -184,6 +195,7 @@ def data_display_section() -> rx.Component:
         ),
         antd.table(columns=TABLE_COLUMNS, data_source=TABLE_DATA, pagination=False),
         antd.timeline(items=TIMELINE_ITEMS),
+        antd.calendar(fullscreen=False, on_select=DemoState.set_selected_date),
         antd.progress(percent=DemoState.volume),
     )
 

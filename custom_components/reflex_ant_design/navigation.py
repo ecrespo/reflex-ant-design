@@ -1,8 +1,11 @@
-"""Navigation components: Anchor, Breadcrumb, Dropdown, Menu, Pagination, Steps, Tabs.
+"""Navigation components: Affix, Anchor, Breadcrumb, Dropdown, Menu, Pagination, Steps, Tabs.
 
 Ant Design v5+ favors a data-driven ``items`` prop (a list of dicts) over
 nested child components for most of these. The wrappers expose both ``items``
 and the relevant event handlers.
+
+``Affix`` is grouped here for cohesion (it commonly pins navigation elements
+such as :class:`Anchor` on scroll); upstream antd lists it under "Other".
 """
 
 from __future__ import annotations
@@ -13,6 +16,24 @@ import reflex as rx
 from reflex.vars import Var
 
 from .base import AntdComponent, Size
+
+
+# ---------------------------------------------------------------------------
+# Affix
+# ---------------------------------------------------------------------------
+class Affix(AntdComponent):
+    """``Affix`` -- pin an element to the viewport while the page scrolls."""
+
+    tag = "Affix"
+
+    # Distance (px) from the top of the viewport to pin at.
+    offset_top: Var[int]
+
+    # Distance (px) from the bottom of the viewport to pin at.
+    offset_bottom: Var[int]
+
+    # Fires with ``True`` when the element becomes affixed, ``False`` when not.
+    on_change: rx.EventHandler[lambda affixed: [affixed]]
 
 
 # ---------------------------------------------------------------------------
@@ -207,6 +228,7 @@ class Tabs(AntdComponent):
     on_edit: rx.EventHandler[lambda target_key, action: [target_key, action]]
 
 
+affix = Affix.create
 anchor = Anchor.create
 breadcrumb = Breadcrumb.create
 dropdown = Dropdown.create

@@ -23,6 +23,7 @@ from .data_display import (
     avatar_group,
     badge,
     badge_ribbon,
+    calendar,
     card,
     card_grid,
     card_meta,
@@ -119,6 +120,7 @@ from .layout import (
     splitter_panel,
 )
 from .navigation import (
+    affix,
     anchor,
     breadcrumb,
     dropdown,
@@ -159,6 +161,7 @@ antd = SimpleNamespace(
     splitter=splitter,
     splitter_panel=splitter_panel,
     # navigation
+    affix=affix,
     anchor=anchor,
     breadcrumb=breadcrumb,
     dropdown=dropdown,
@@ -202,6 +205,7 @@ antd = SimpleNamespace(
     avatar_group=avatar_group,
     badge=badge,
     badge_ribbon=badge_ribbon,
+    calendar=calendar,
     card=card,
     card_meta=card_meta,
     card_grid=card_grid,

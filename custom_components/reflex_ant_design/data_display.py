@@ -78,6 +78,36 @@ class BadgeRibbon(AntdComponent):
 
 
 # ---------------------------------------------------------------------------
+# Calendar
+# ---------------------------------------------------------------------------
+class Calendar(AntdComponent):
+    """``Calendar`` -- display or select dates in a month/year panel.
+
+    Like :class:`~reflex_ant_design.data_entry.DatePicker`, antd stores the
+    Calendar value as a ``dayjs`` object. This wrapper therefore exposes the
+    display configuration and serializable events rather than a string
+    ``value`` prop. ``on_change``/``on_select`` deliver the selected date's
+    string form; ``on_panel_change`` also delivers the new ``mode``. See
+    ``docs/guides/usage.md`` for the dayjs round-tripping notes.
+    """
+
+    tag = "Calendar"
+
+    # Full-screen month/year grid (default) vs. a compact card calendar.
+    fullscreen: Var[bool]
+
+    # Show the ISO week number column (antd >= 5.23).
+    show_week: Var[bool]
+
+    # Panel display mode.
+    mode: Var[Literal["month", "year"]]
+
+    on_change: rx.EventHandler[lambda date: [date.to_string()]]
+    on_select: rx.EventHandler[lambda date, info: [date.to_string()]]
+    on_panel_change: rx.EventHandler[lambda date, mode: [date.to_string(), mode]]
+
+
+# ---------------------------------------------------------------------------
 # Card
 # ---------------------------------------------------------------------------
 class Card(AntdComponent):
@@ -480,6 +510,7 @@ avatar = Avatar.create
 avatar_group = AvatarGroup.create
 badge = Badge.create
 badge_ribbon = BadgeRibbon.create
+calendar = Calendar.create
 card = Card.create
 card_meta = CardMeta.create
 card_grid = CardGrid.create

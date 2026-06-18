@@ -38,6 +38,7 @@ from .data_display import (
     avatar_group,
     badge,
     badge_ribbon,
+    calendar,
     card,
     card_grid,
     card_meta,
@@ -135,6 +136,7 @@ from .layout import (
 )
 from .namespace import antd
 from .navigation import (
+    affix,
     anchor,
     breadcrumb,
     dropdown,
@@ -183,6 +185,7 @@ __all__ = [
     "splitter",
     "splitter_panel",
     # navigation
+    "affix",
     "anchor",
     "breadcrumb",
     "dropdown",
@@ -226,6 +229,7 @@ __all__ = [
     "avatar_group",
     "badge",
     "badge_ribbon",
+    "calendar",
     "card",
     "card_meta",
     "card_grid",

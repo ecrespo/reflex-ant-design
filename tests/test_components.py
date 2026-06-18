@@ -63,3 +63,22 @@ def test_config_provider_theme_dict():
         theme={"token": {"colorPrimary": "#722ed1"}},
     )
     assert component.render()
+
+
+def test_calendar_serializable_events_render():
+    # antd Calendar emits dayjs objects; the wrapper must deliver serializable
+    # payloads. All three event specs must compile and render.
+    assert antd.calendar(on_change=_S.set_value).render()
+    assert antd.calendar(on_select=_S.set_value).render()
+    assert antd.calendar(on_panel_change=_S.set_value).render()
+    from reflex_ant_design.data_display import Calendar
+
+    assert Calendar.create().tag == "Calendar"
+
+
+def test_affix_pins_child_and_emits_bool():
+    component = antd.affix(antd.button("top"), offset_top=10, on_change=_S.set_value)
+    assert component.render()
+    from reflex_ant_design.navigation import Affix
+
+    assert Affix.create().tag == "Affix"

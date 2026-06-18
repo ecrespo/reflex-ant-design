@@ -30,6 +30,10 @@ class DemoState(rx.State):
     # --- Navigation ---------------------------------------------------------
     active_tab: str = "overview"
     current_step: int = 1
+    affixed: bool = False
+
+    # --- Data display -------------------------------------------------------
+    selected_date: str = ""
 
     # --- Theme --------------------------------------------------------------
     primary_color: str = "#1677ff"
@@ -99,6 +103,16 @@ class DemoState(rx.State):
     def set_step(self, value: int):
         """Set the current step in the Steps component."""
         self.current_step = value
+
+    @rx.event
+    def set_affixed(self, value: bool):
+        """Track whether the Affix element is currently pinned."""
+        self.affixed = value
+
+    @rx.event
+    def set_selected_date(self, value: str):
+        """Store the Calendar's selected date (ISO string)."""
+        self.selected_date = value
 
     @rx.event
     def set_primary_color(self, value: str):
