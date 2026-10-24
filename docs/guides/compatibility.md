@@ -4,6 +4,8 @@
 
 | reflex-ant-design | Reflex | antd (npm) | React | Python |
 | --- | --- | --- | --- | --- |
+| 0.2.x | ≥ 0.10 | `antd@^6` (default) | 19 | ≥ 3.11 |
+| 0.2.x (React 18 apps) | ≥ 0.10 | pin `antd@^5` | 18 | ≥ 3.11 |
 | 0.1.x | ≥ 0.7 | `antd@^6` (default) | 19 | ≥ 3.10 |
 | 0.1.x (React 18 apps) | ≥ 0.7 | pin `antd@^5` | 18 | ≥ 3.10 |
 
