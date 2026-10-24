@@ -11,7 +11,7 @@ help:
 	@echo "format    Auto-fix lint/format issues with ruff"
 	@echo "test      Run the pytest suite"
 	@echo "demo      Run the demo app (reflex run)"
-	@echo "build     Build the wheel + sdist (reflex component build)"
+	@echo "build     Regenerate the .pyi stubs and build the wheel + sdist"
 	@echo "publish   Publish to PyPI with uv (needs credentials)"
 	@echo "clean     Remove build artifacts and caches"
 
@@ -33,8 +33,9 @@ test:
 demo:
 	cd reflex_ant_design_demo && uv run reflex run
 
-build:
-	uv run reflex component build
+build:  # Reflex 0.10 removed `reflex component build`
+	uv run python -m reflex_base.utils.pyi_generator custom_components/reflex_ant_design
+	uv build
 
 publish: build
 	uv publish
